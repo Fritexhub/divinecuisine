@@ -15,11 +15,9 @@ public class MealType implements MenuComponent {
     public List<MenuComponent> getItems() {
         return items;
     }
-
     public String getName() {
         return name;
     }
-
     public double getPrice() {
         return 0;
     }
