@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Order Your Meal</title>
+    <link rel="stylesheet" th:href="@{/css/menu.css}" />
+</head>
+<body>
+<div class="container">
+    <h1>Food Ordering</h1>
+    <form th:action="@{/submitOrder}" method="post" class="order-form">
+        <div class="form-group">
+            <label for="mealType">Choose a meal type:</label>
+            <select name="mealType" id="mealType" required>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Dinner">Dinner</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="menuItem">Choose a dish:</label>
+            <select name="menuItem" id="menuItem" required>
+                <optgroup label="Breakfast">
+                    <option value="Pancakes">Pancakes - $5.99</option>
+                    <option value="ScrambledEggs">Scrambled Eggs - $4.50</option>
+                    <option value="FruitSalad">Fruit Salad - $3.99</option>
+                </optgroup>
+                <optgroup label="Lunch">
+                    <option value="ChickenSandwich">Chicken Sandwich - $8.99</option>
+                    <option value="VeggieBurger">Veggie Burger - $7.99</option>
+                </optgroup>
+                <optgroup label="Dinner">
+                    <option value="Carbonara">Carbonara - $12.99</option>
+                    <option value="Salmon">Salmon - $14.50</option>
+                    <option value="BeefStirFry">Beef Stir-Fry - $11.99</option>
+                </optgroup>
+            </select>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Order</button>
+    </form>
+</div>
+</body>
+</html>

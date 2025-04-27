@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Divine Cuisine Food Ordering System</title>
+  <link rel="stylesheet" th:href="@{/css/app.css}" />
+</head>
+<body>
+
+<header>
+  <h2> Divine Cuisine | Online Food Ordering System. Welcome!</h2>
+</header>
+
+<nav>
+  <a th:href="@{/index}">Home</a>
+  <a th:href="@{/signup}">Sign up</a>
+  <a th:href="@{/profile}">Menu</a>
+  <a th:href="@{/login}">Login</a>
+  <a th:href="@{/logout}">Logout</a>
+
+</nav>
+
+<section class="hero">
+  <h1>Delicious Meals Delivered to Your Doorstep</h1>
+  <p>Order your favorite dishes in just a few clicks</p>
+  <button class="order-now"><a th:href="@{/signup}">Order Now </a></button>
+</section>
+
+<section class="featured">
+  <div class="dish">
+    <img th:src="@{/imgs/food8.jpeg}" alt="Dish 1">
+    <h3>Egusi and fufu</h3>
+    <p>A classic Nigerian cuisine with vegetable, pepper and chicken.</p>
+  </div>
+  <div class="dish">
+    <img th:src="@{/imgs/food3.jpeg}" alt="Dish 2">
+    <h3>Fried rice with grilled chicken </h3>
+    <p> pasta with eggs, and pepper.</p>
+  </div>
+  <div class="dish">
+    <img th:src="@{/imgs/food1.jpeg}" alt="Dish 3">
+    <h3>Grilled fish</h3>
+    <p>Fried fish with plantain, tomatoes and rice pasta.</p>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Divine Cuisine Food Ordering System. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

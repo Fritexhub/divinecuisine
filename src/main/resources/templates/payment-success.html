@@ -1,0 +1,31 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Status</title>
+    <link rel="stylesheet" th:href="@{/css/paysuccess.css}" />
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Payment Status</h2>
+
+    <div class="message">
+
+        <p th:text="${message}"></p>
+    </div>
+
+    <div class="actions">
+
+        <a th:href="@{/}"  class="btn">Go Back to Home</a>
+        <a th:href="@{/profile}" class="btn">View Orders</a>
+    </div>
+</div>
+
+</body>
+</html>

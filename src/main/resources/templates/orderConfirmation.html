@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Confirmed</title>
+  <link rel="stylesheet" th:href="@{/css/confirm.css}">
+</head>
+<body>
+<div class="confirmation-container">
+  <h2>Order Picked. Proceed to Pay!</h2>
+
+  <!-- Display ordered item -->
+  <p th:text="'You selected: ' + ${item.name} + ' for £' + ${item.price}"></p>
+
+  <!-- Link back to menu -->
+  <a th:href="@{/menu}" class="back-link">← Back to menu</a>
+
+  <!-- Corrected link to open the payment form -->
+  <a th:href="@{/payment}" class="back-link">→ Make Payment</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Divine Cuisine Online Food Ordering</title>
+    <link rel="stylesheet" th:href="@{/css/profile.css}" />
+</head>
+<body>
+
+<!-- Navigation bar with dropdown -->
+<nav>
+    <a th:href="@{/}">Home</a>
+    <a th:href="@{/signup}">Sign up</a>
+    <a th:href="@{/profile}">Menu</a>
+    <a th:href="@{/login}">Login</a>
+    <a th:href="@{/logout}">Logout</a>
+</nav>
+
+<!-- Main Home Page Buttons -->
+<div class="container">
+    <a th:href="@{/menu}" class="card">
+        <span>🍽️</span>
+        <h3>View Food Menu</h3>
+        <p>Browse and order meals.</p>
+    </a>
+    <a th:href="@{/orderConfirmation}" class="card">
+        <span>🛒</span>
+        <h3>Your Order</h3>
+        <p>View your Orders.</p>
+    </a>
+</div>
+
+<!-- Footer -->
+<footer>
+    &copy; 2025 Divine Cuisine System. All rights reserved.
+</footer>
+
+</body>
+</html>

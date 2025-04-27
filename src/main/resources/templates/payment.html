@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Divine Cuisine Online Food Ordering</title>
+    <link rel="stylesheet" th:href="@{/css/payment.css}" />
+</head>
+<body>
+
+<h2>Select Payment Method</h2>
+
+<form th:action="@{/payment/process}" th:object="${paymentDto}" method="post" id="payment-form">
+
+    <!-- Payment Method Selection -->
+    <label for="method">Choose Payment Method:</label>
+    <select th:field="*{method}" id="method" onchange="togglePaymentFields()">
+        <option value="credit" selected>Credit Card</option>
+        <option value="paypal">PayPal</option>
+        <option value="bank">Bank Transfer</option>
+    </select>
+    <br><br>
+
+    <!-- Credit Card Section -->
+    <div id="credit" class="payment-details">
+        <h3>Credit Card Info</h3>
+        <input type="text" th:field="*{cardNumber}" id="cardNumber" placeholder="Card Number"><br><br>
+        <input type="text" th:field="*{cardName}" id="cardName" placeholder="Name on Card"><br><br>
+        <input type="text" th:field="*{expiry}" id="expiry" placeholder="Expiry Date (MM/YY)"><br><br>
+        <input type="text" th:field="*{cvv}" id="cvv" placeholder="CVV"><br><br>
+    </div>
+
+    <!-- PayPal Section -->
+    <div id="paypal" class="payment-details" style="display: none;">
+        <h3>PayPal Info</h3>
+        <input type="email" th:field="*{paypalEmail}" id="paypalEmail" placeholder="PayPal Email"><br><br>
+    </div>
+
+    <!-- Bank Transfer Section -->
+    <!-- Bank Transfer Section -->
+    <div id="bank" class="payment-details" style="display: none;">
+        <h3>Bank Transfer Info</h3>
+
+        <!-- Static recipient account details -->
+        <div class="bank-details-box" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+            <strong>Account Name:</strong> Divine Cuisine Ltd<br>
+            <strong>Account Number:</strong> 1234567890<br>
+            <strong>Bank Name:</strong> Bank of JavaSpring<br>
+            <strong>Sort Code:</strong> 12-00-34
+        </div>
+        <!-- User input fields to confirm their payment -->
+        <input type="text" th:field="*{accountName}" id="accountName" placeholder="Divine Cuisine Ltd" readonly><br><br>
+        <input type="text" th:field="*{accountNumber}" id="accountNumber" placeholder="1234567890" readonly><br><br>
+        <input type="text" th:field="*{bankName}" id="bankName" placeholder="Bank of JavaSpring" readonly><br><br>
+    </div>
+
+    <button type="submit" id="pay-button" disabled>Pay Now</button>
+</form>
+
+<script>
+    function togglePaymentFields() {
+        const selectedMethod = document.getElementById('method').value;
+        const payButton = document.getElementById('pay-button');
+
+        // Hide and disable all sections and inputs
+        document.querySelectorAll('.payment-details').forEach(section => {
+            section.style.display = 'none';
+            section.querySelectorAll('input').forEach(input => input.disabled = true);
+        });
+
+        // Show and enable the selected section
+        const sectionMap = {
+            credit: 'credit',
+            paypal: 'paypal',
+            bank: 'bank'
+        };
+
+        if (sectionMap[selectedMethod]) {
+            const section = document.getElementById(sectionMap[selectedMethod]);
+            section.style.display = 'block';
+            section.querySelectorAll('input').forEach(input => input.disabled = false);
+        }
+
+        payButton.disabled = !checkRequiredFields();
+    }
+
+    function checkRequiredFields() {
+        const selectedMethod = document.getElementById('method').value;
+        const requiredFields = {
+            credit: ['cardNumber', 'cardName', 'expiry', 'cvv'],
+            paypal: ['paypalEmail'],
+            bank: ['accountName', 'accountNumber', 'bankName']
+        };
+
+        const fields = requiredFields[selectedMethod] || [];
+        return fields.every(id => {
+            const input = document.getElementById(id);
+            return input && !input.disabled && input.value.trim() !== '';
+        });
+    }
+
+    function prependPoundSign(input) {
+        const amountDisplay = document.getElementById('amount-display');
+        const amountValue = document.getElementById('amount-value');
+        const amount = input.value ? parseFloat(input.value).toFixed(2) : "0.00";
+        amountDisplay.style.display = "block";
+        amountValue.textContent = amount;
+    }
+
+    // Call on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        togglePaymentFields();
+
+        // Watch input fields for changes
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', () => {
+                document.getElementById('pay-button').disabled = !checkRequiredFields();
+            });
+        });
+
+        // Also check amount field
+        document.getElementById('amount').addEventListener('input', () => {
+            document.getElementById('pay-button').disabled = !checkRequiredFields();
+        });
+    });
+</script>
+
+</body>
+</html>
