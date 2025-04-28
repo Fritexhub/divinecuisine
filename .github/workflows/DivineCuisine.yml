@@ -38,7 +38,7 @@ jobs:
       # Change working directory to the correct folder where pom.xml is located
       - name: Build with Maven
         run: mvn clean install
-        working-directory: /c/Users/ACTNET SYSTEM/Desktop/SWE/DivineCuisine
+        working-directory: https://github.com/Fritexhub/divinecuisine/blob/82e313976f844215deeff17b5215ec51c335f30f/pom.xml
 
       # Run tests
       - name: Run tests
