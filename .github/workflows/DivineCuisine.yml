@@ -38,7 +38,7 @@ jobs:
       # Change working directory to the correct folder where pom.xml is located
       - name: Build with Maven
         run: mvn clean install
-        working-directory: divinecuisine  # This is where your pom.xml is located
+        working-directory: DivineCuisine
 
       # Run tests
       - name: Run tests
