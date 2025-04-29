@@ -11,10 +11,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
-public class AllUser {
+public class UserController {
     private  final UserRepository userRepository;
 
-    public AllUser(UserRepository userRepository){
+    public UserController(UserRepository userRepository){
         this.userRepository = userRepository;
     }
     @GetMapping
