@@ -38,7 +38,7 @@ jobs:
       # Build with Maven (no need for working-directory if pom.xml is at root)
       - name: Build with Maven
         run: mvn clean install
-        working-directory: . 
+        working-directory: divinecuisine 
        
         
       # Run tests
