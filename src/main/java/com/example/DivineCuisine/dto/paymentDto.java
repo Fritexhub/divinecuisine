@@ -3,25 +3,19 @@ package com.example.DivineCuisine.dto;
 public class paymentDto {
     private String method;
     private double amount;
-
-    // Here, we define different payment strategy data from the users
-    //This is for the Credit Card strategy
     private String cardNumber;
     private String cardName;
     private String expiry;
     private int cvv;
 
-    //This is for the paypal payment strategy
+
     private String paypalEmail;
 
-    //This is for the Bank payment strategy
     private String accountName;
     private String accountNumber;
     private String bankName;
 
 
-
-    // We declare setters and getters method for each of the data required for different payment strategies
     public String getMethod() {
         return method;
     }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 public class PayPalPayment implements PaymentStrategy {
     @Override
     public String pay(paymentDto request) {
+
         return "Paid using PayPal with email: " + request.getPaypalEmail();
     }
 }

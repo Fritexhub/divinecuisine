@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 public class BankTransferPayment implements PaymentStrategy {
     @Override
     public String pay(paymentDto request) {
+
         return "Paid via Bank Transfer to account: " + request.getAccountNumber();
     }
 }
