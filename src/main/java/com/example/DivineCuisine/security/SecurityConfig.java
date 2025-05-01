@@ -12,23 +12,20 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
-
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
+        return NoOpPasswordEncoder.getInstance(); // Not recommended for production!
     }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/","/public/**","/css/**","/login","/signup",
                                 "/imgs/**","/register","/userLogin","/profile","/menu",
                                 "/submitOrder", "/orderConfirmation","api/users",
                                 "/payment/process", "/payment", "/payment/**","/payment-success").permitAll()
                         .anyRequest().authenticated()
-
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
@@ -42,15 +39,11 @@ public class SecurityConfig {
                         .deleteCookies("JSESSIONID")
                         .permitAll()
                 );
-
         return http.build();
     }
-
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
-
 }
-

@@ -105,18 +105,15 @@
         amountValue.textContent = amount;
     }
 
-    // Call on page load
     document.addEventListener('DOMContentLoaded', () => {
         togglePaymentFields();
 
-        // Watch input fields for changes
         document.querySelectorAll('input').forEach(input => {
             input.addEventListener('input', () => {
                 document.getElementById('pay-button').disabled = !checkRequiredFields();
             });
         });
 
-        // Also check amount field
         document.getElementById('amount').addEventListener('input', () => {
             document.getElementById('pay-button').disabled = !checkRequiredFields();
         });
