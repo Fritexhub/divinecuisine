@@ -20,6 +20,11 @@
     <div th:if="${param.error}">
         <p style="color: red;">Invalid credentials. Please try again.</p>
     </div>
+
 </form>
+<!-- Success message if login is successful -->
+<div th:if="${param.loginSuccess}">
+    <p style="color: green;">Login successful! Welcome to your profile.</p>
+</div>
 </body>
 </html>

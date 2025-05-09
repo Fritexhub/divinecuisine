@@ -33,7 +33,7 @@ public class LoginController {
                     new UsernamePasswordAuthenticationToken(email, password)
             );
             session.setAttribute("USER", auth.getPrincipal());
-            return "redirect:/profile";
+            return "redirect:/profile?loginSuccess=true";
         } catch (AuthenticationException e) {
             return "redirect:/login?error=true";
         }

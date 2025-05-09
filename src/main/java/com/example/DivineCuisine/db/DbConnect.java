@@ -6,9 +6,9 @@ import java.sql.SQLException;
 public class DbConnect {
     private static DbConnect instance;
     private Connection connection;
-    private String url = "jdbc:postgresql://dpg-cvq1k20dl3ps73ard0lg-a.oregon-postgres.render.com:5432/fridaydb";
-    private String username = "fridaydb_user";
-    private String password = "AewWVoggzLbZ5IDCTuZoHGqrSJc067in";
+    private String url = "jdbc:postgresql://dpg-d0cfnn15pdvs73dldln0-a.oregon-postgres.render.com:5432/divinecuisinedb";
+    private String username = "divinecuisinedb_user";
+    private String password = "4IM6tlvyixldG6e3J0SIPg3sVGUNaPzE";
 
     private DbConnect() throws SQLException {
         try {
@@ -25,7 +25,6 @@ public class DbConnect {
         }
         return instance;
     }
-
     public Connection getConnection() {
         return connection;
     }
