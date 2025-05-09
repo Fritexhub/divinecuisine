@@ -39,7 +39,7 @@ public class SignupController {
 
         userRepository.save(user);
 
-        model.addAttribute("message", "Registration successful and saved to database!");
+        model.addAttribute("message", "Registration successful! Proceed to login");
         return "Signup";
     }
 }

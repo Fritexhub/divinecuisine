@@ -1,14 +1,11 @@
 package com.example.DivineCuisine.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,10 +15,10 @@ public class User {
     private String address;
     private String password;
 
-    // Default constructor (protected for JPA)
-    protected User(){}
 
-    // Private constructor for builder pattern
+    protected User() {}
+
+
     private User(UserBuilder builder) {
         this.fullname = builder.fullname;
         this.email = builder.email;
@@ -29,7 +26,6 @@ public class User {
         this.password = builder.password;
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -37,7 +33,6 @@ public class User {
     public String getFullname() {
         return fullname;
     }
-
     public void setFullname(String fullname) {
         this.fullname = fullname;
     }
@@ -45,7 +40,6 @@ public class User {
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -53,7 +47,6 @@ public class User {
     public String getAddress() {
         return address;
     }
-
     public void setAddress(String address) {
         this.address = address;
     }
@@ -61,24 +54,21 @@ public class User {
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
 
-    // Static builder method
+
+    // Builder pattern to construct User object
     public static UserBuilder builder() {
         return new UserBuilder();
     }
-
-    // Static nested builder class
-    public static class UserBuilder {
+        public static class UserBuilder {
         private String fullname;
         private String email;
         private String address;
         private String password;
 
-        // Setters for each field in the builder
         public UserBuilder setFullname(String fullname) {
             this.fullname = fullname;
             return this;
@@ -99,7 +89,6 @@ public class User {
             return this;
         }
 
-        // Build method to return a new User instance
         public User build() {
             return new User(this);
         }
