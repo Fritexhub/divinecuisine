@@ -9,16 +9,12 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String fullname;
     private String email;
     private String address;
     private String password;
 
-
     protected User() {}
-
-
     private User(UserBuilder builder) {
         this.fullname = builder.fullname;
         this.email = builder.email;
@@ -29,7 +25,6 @@ public class User {
     public Long getId() {
         return id;
     }
-
     public String getFullname() {
         return fullname;
     }
