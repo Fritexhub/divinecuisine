@@ -19,11 +19,6 @@
   <a th:href="@{/profile}">Menu</a>
   <a th:href="@{/login}">Login</a>
   <a th:href="@{/logout}">Logout</a>
-  <div sec:authorize="hasRole('ADMIN')">
-    <a th:href="@{/admin/dashboard}">Admin Dashboard</a>
-  </div>
-
-
 </nav>
 
 <section class="hero">
